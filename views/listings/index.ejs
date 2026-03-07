@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <title>TravelNest</title>
+</head>
+<body>
+    <%- include('../includes/navbar.ejs') %>
+
+
+    <div class="container mt-4 mb-4">
+
+        <div class="listing-filters mb-4" aria-label="Browse categories">
+            <button type="button" class="filter-btn active" aria-pressed="true">
+                <i class="fa-solid fa-fire" aria-hidden="true"></i>
+                <span>Trending</span>
+            </button>
+            <button type="button" class="filter-btn">
+                <i class="fa-solid fa-bed" aria-hidden="true"></i>
+                <span>Rooms</span>
+            </button>
+            <button type="button" class="filter-btn">
+                <i class="fa-solid fa-city" aria-hidden="true"></i>
+                <span>Iconic Cities</span>
+            </button>
+            <button type="button" class="filter-btn">
+                <i class="fa-solid fa-mountain" aria-hidden="true"></i>
+                <span>Mountains</span>
+            </button>
+            <button type="button" class="filter-btn">
+                <i class="fa-solid fa-chess-rook" aria-hidden="true"></i>
+                <span>Castles</span>
+            </button>
+            <button type="button" class="filter-btn">
+                <i class="fa-solid fa-person-swimming" aria-hidden="true"></i>
+                <span>Amazing Pools</span>
+            </button>
+            <button type="button" class="filter-btn">
+                <i class="fa-solid fa-campground" aria-hidden="true"></i>
+                <span>Camping</span>
+            </button>
+            <button type="button" class="filter-btn">
+                <i class="fa-solid fa-tractor" aria-hidden="true"></i>
+                <span>Farms</span>
+            </button>
+            <button type="button" class="filter-btn">
+                <i class="fa-solid fa-snowflake" aria-hidden="true"></i>
+                <span>Arctic</span>
+            </button>
+        </div>
+
+        <%- include('../includes/flash.ejs') %>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+            <% for(let listing of allListing){%> 
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="<%= listing.image.url%>" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title"><%= listing.title%></h5>
+                            <p class="card-text">Price : <i class="fa-solid fa-indian-rupee-sign"></i> <%= listing.price%> / night</p>
+                            <a href="http://localhost:3000/listings/<%= listing._id%>" class="btn btn-primary">Details</a>
+                        </div>
+                    </div>  
+                </div>  
+            <%}%>
+        </div>
+    </div>
+
+
+    
+
+    <%- include('../includes/footer.ejs') %>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>

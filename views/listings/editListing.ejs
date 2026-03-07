@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="/css/index.css" />
+  <link rel="stylesheet" href="/css/editListing.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <title>Edit Listing</title>
+</head>
+<body>
+  <%- include('../includes/navbar.ejs') %>
+
+  <main class="form-page">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-10 col-lg-8">
+          <div class="form-card">
+            <h1 class="form-title">Edit Listing</h1>
+
+            <form action="/listings/<%= editListing._id %>?_method=PUT" method="POST" class="listing-form needs-validation" novalidate enctype="multipart/form-data">
+              <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input class="form-control" type="text" name="title" id="title" value="<%= editListing.title %>" required>
+              </div>
+
+              <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea class="form-control" name="description" id="description" required><%= editListing.description %></textarea>
+              </div>
+
+              <div class="mb-3">
+                <p for="image-preview">Image Preview</p>
+                <img src="<%= editListing.image.url %>" alt="Image Preview" class="img-thumbnail mb-2" id="image-preview" style="width: 150px; height: 150px; object-fit: cover;" />
+                <label for="image" class="form-label">Upload Image</label>
+                <input class="form-control" type="file" name="image" id="image" accept="image/*">
+              </div>
+
+              <div class="row g-3 mb-3">
+                <div class="col-sm-6">
+                  <label for="price" class="form-label">Price</label>
+                  <input class="form-control" type="number" name="price" id="price" value="<%= editListing.price %>" required>
+                </div>
+                <div class="col-sm-6">
+                  <label for="country" class="form-label">Country</label>
+                  <input class="form-control" type="text" name="country" id="country" value="<%= editListing.country %>" required>
+                </div>
+              </div>
+
+              <div class="mb-4">
+                <label for="location" class="form-label">Location</label>
+                <input class="form-control" type="text" name="location" id="location" value="<%= editListing.location %>" required>
+              </div>
+
+              <div class="d-flex">
+                <button type="submit" class="btn btn-primary btn-submit">Update</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <%- include('../includes/footer.ejs') %>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/js/formValidation.js"></script>
+</body>
+</html>
